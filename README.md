@@ -13,4 +13,5 @@ npm i
 npm run start
 ```
 
-endpoint는 localhost:8000입니다.
+endpoint는 https://localhost:8000 입니다.
+로컬 서버 실행후에 들어가시면 모든 데이터 확인 가능합니다.
