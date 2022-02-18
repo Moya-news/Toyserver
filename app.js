@@ -13,6 +13,7 @@ const shortid = require("shortid");
 const todoGenerator = (data) => ({
   id: shortid.generate(),
   content: data,
+  checked: false,
 });
 
 // 투두리스트
@@ -41,12 +42,13 @@ app.post("/", function (req, res) {
 });
 
 // 투두 수정
-// {content,todoId}
+// {content,todoId,checked}
 app.put("/", function (req, res) {
   try {
-    const { todoId, content } = req.body;
+    const { todoId, content, checked } = req.body;
     const targetIndex = todoList.findIndex((todo) => todo.id === todoId);
-    todoList[targetIndex].content = content;
+    if (content) todoList[targetIndex].content = content;
+    if (checked) todoList[targetIndex].checked = checked;
     res.status(200).send(todoList[targetIndex]);
   } catch (e) {
     res.status(500).send("error!");
